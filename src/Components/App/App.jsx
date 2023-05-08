@@ -7,6 +7,13 @@ function App() {
   return (
     <>
       <h1>Vite + React</h1>
+      <nav>
+        <ul>
+          <li>State Hook</li>
+          <li>Effect Hook</li>
+          <li>Props</li>
+        </ul>
+      </nav>
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
