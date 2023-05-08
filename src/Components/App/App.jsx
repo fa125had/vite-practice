@@ -12,6 +12,7 @@ function App() {
           <li>State Hook</li>
           <li>Effect Hook</li>
           <li>Props</li>
+          <li>Git&GitHub</li>
         </ul>
       </nav>
         <button onClick={() => setCount((count) => count + 1)}>
