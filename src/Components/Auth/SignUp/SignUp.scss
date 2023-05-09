@@ -1,0 +1,14 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+  input {
+    padding: 0.5rem 1rem;
+    color: whitesmoke;
+    font-size: 1.2rem;
+  }
+}
+.errorOutput {
+  color: orange;
+}
