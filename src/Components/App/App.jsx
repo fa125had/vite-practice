@@ -1,25 +1,15 @@
-import { useState } from 'react'
-import './App.scss'
+import './App.scss';
+import { SignUp } from '../Auth/SignUp/SignUp';
+import { useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  
   return (
     <>
-      <h1>Vite + React</h1>
-      <nav>
-        <ul>
-          <li>State Hook</li>
-          <li>Effect Hook</li>
-          <li>Props</li>
-          <li>Git&GitHub</li>
-        </ul>
-      </nav>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+      <h1>Welcome</h1>
+      <SignUp />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
