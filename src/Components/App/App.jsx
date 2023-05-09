@@ -5,11 +5,10 @@ import { SignUp } from '../Auth/SignUp/SignUp';
 function App() {
   
   return (
-    <>
-      <h1>Welcome</h1>
-      <h2>Pocket Counter</h2>
+    <div className='app-wrapper'>
+      <h1>Pocket Counter</h1>
       <SignUp />
-    </>
+    </div>
   );
 }
 
