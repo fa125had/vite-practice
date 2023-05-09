@@ -4,19 +4,15 @@
   display: flex;
   flex-direction: column;
   place-items: center;
-  overflow: auto;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
   form {
     display: flex;
     flex-direction: column;
     place-items: center;
     padding: 0.5rem;
-    gap: 1rem;
+    // gap: 1rem;
     label {
       align-self: self-start;
-      margin-top: 1rem;
+      margin-top: 2rem;
     }
     input {
       padding: 0.5rem 4rem;      
@@ -24,10 +20,13 @@
       font-size: 1.2rem;
       border: none;
     }
+    button {
+      margin-top: 2rem;
+    }
   }
   .errorOutput {
     color: orange;
-    width: 100%;
     padding: 0.5rem;
+    text-align: center;
   }
 }
