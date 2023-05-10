@@ -30,7 +30,7 @@ export const SignIn = () => {
         <input
           type='email'
           name='email'
-          id='email'
+          id='signin-email'
           placeholder='Enter Your Email'
           value={email}
           onChange={changeHandler}
@@ -40,7 +40,7 @@ export const SignIn = () => {
         <input
           type='password'
           name='password'
-          id='password'
+          id='signin-password'
           placeholder='Enter Your Password'
           value={password}
           onChange={changeHandler}
