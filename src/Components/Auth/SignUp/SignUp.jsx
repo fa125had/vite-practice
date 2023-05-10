@@ -43,7 +43,7 @@ export const SignUp = () => {
         signupForm[0].style.pointerEvents = 'auto';
       });
   };
-  
+
   return (
     <div className='signup-wrapper'>
       <form onSubmit={signup}>
@@ -52,7 +52,7 @@ export const SignUp = () => {
         <input
           type='email'
           name='email'
-          id='email'
+          id='signup-email'
           placeholder='Enter Your Email'
           value={email}
           onChange={changeHandler}
@@ -62,7 +62,7 @@ export const SignUp = () => {
         <input
           type='password'
           name='password'
-          id='password'
+          id='signup-password'
           placeholder='Enter Your Password'
           value={password}
           onChange={changeHandler}
