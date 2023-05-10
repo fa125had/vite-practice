@@ -10,6 +10,15 @@ export const SignUp = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  const changeHandler = ({ target }) => {
+    const { name, value } = target;
+    if (name === 'email') {
+      setEmail(value);
+    } else if (name === 'password') {
+      setPassword(value);
+    }
+  };
+
   const signup = (submit) => {
     submit.preventDefault();
     setIsLoading(true);
@@ -34,16 +43,7 @@ export const SignUp = () => {
         signupForm[0].style.pointerEvents = 'auto';
       });
   };
-
-  const changeHandler = ({ target }) => {
-    const { name, value } = target;
-    if (name === 'email') {
-      setEmail(value);
-    } else if (name === 'password') {
-      setPassword(value);
-    }
-  };
-
+  
   return (
     <div className='signup-wrapper'>
       <form onSubmit={signup}>
