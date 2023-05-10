@@ -12,7 +12,7 @@ function App() {
     <div className='app-wrapper'>
       <h1>Pocket Counter</h1>
       <SignIn />
-      {/* <SignUp /> */}
+      <SignUp />
     </div>
   );
 }
