@@ -2,10 +2,14 @@ import './SignIn.scss';
 import { auth } from '../../../util/Firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
+const signinForm = document.getElementsByTagName('form');
+
 
 export const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const changeHandler = ({ target }) => {
     const { name, value } = target;
@@ -17,9 +21,27 @@ export const SignIn = () => {
   };
   const signin = (submit) => {
     submit.preventDefault();
+    setIsLoading(true);
+    setError(null);
+    signinForm[0].style.pointerEvents = 'none';
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCred) => console.log(userCred))
-      .catch((err) => console.log(err));
+      .then(response => {
+        setEmail('');
+        setPassword('');
+        setError('');
+        setIsLoading(false);
+        signinForm[0].style.pointerEvents = 'auto';
+
+        return response;
+      })
+      .catch((err) => {
+        const errorCode = err.code;
+        const errorMessage = err.message;
+        const errorOutput = `${errorMessage} ${errorCode}}`;
+        setError(errorOutput);
+        setIsLoading(false);
+        signinForm[0].style.pointerEvents = 'auto';
+      });
   };
 
   return (
@@ -47,8 +69,8 @@ export const SignIn = () => {
         />
         <button type='submit'>Login</button>
       </form>
-      {/* {error && <div className='errorOutput'>{error}</div>} */}
-      {/* {isLoading && <div className='errorOutput'>Loading...</div>} */}
+      {error && <div className='errorOutput'>{error}</div>}
+      {isLoading && <div className='errorOutput'>Loading...</div>}
     </div>
   );
 };
