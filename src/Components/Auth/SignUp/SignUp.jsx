@@ -2,7 +2,6 @@ import './SignUp.scss';
 import { useState } from 'react';
 import { auth } from '../../../util/Firebase';
 import { createUserWithEmailAndPassword } from '@firebase/auth';
-const signupForm = document.getElementsByTagName('form');
 
 export const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -21,16 +20,17 @@ export const SignUp = () => {
 
   const signup = (submit) => {
     submit.preventDefault();
+    const signupForm = document.getElementById('signup-form');
     setIsLoading(true);
     setError(null);
-    signupForm[0].style.pointerEvents = 'none';
+    signupForm.style.pointerEvents = 'none';
     createUserWithEmailAndPassword(auth, email, password)
       .then((response) => {
         setEmail('');
         setPassword('');
         setError('');
         setIsLoading(false);
-        signupForm[0].style.pointerEvents = 'auto';
+        signupForm.style.pointerEvents = 'auto';
 
         return response;
       })
@@ -40,13 +40,15 @@ export const SignUp = () => {
         const errorOutput = `${errorMessage} ${errorCode}}`;
         setError(errorOutput);
         setIsLoading(false);
-        signupForm[0].style.pointerEvents = 'auto';
+        signupForm.style.pointerEvents = 'auto';
       });
   };
 
   return (
     <div className='signup-wrapper'>
-      <form onSubmit={signup}>
+      <form
+        onSubmit={signup}
+        id='signup-form'>
         <h2>Create New Account</h2>
         <label htmlFor='email'>Email:</label>
         <input

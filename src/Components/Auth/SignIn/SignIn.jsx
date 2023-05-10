@@ -2,8 +2,6 @@ import './SignIn.scss';
 import { auth } from '../../../util/Firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
-const signinForm = document.getElementsByTagName('form');
-
 
 export const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -21,16 +19,18 @@ export const SignIn = () => {
   };
   const signin = (submit) => {
     submit.preventDefault();
+    const signinForm = document.getElementById('signin-form');
     setIsLoading(true);
     setError(null);
-    signinForm[0].style.pointerEvents = 'none';
+    signinForm.style.pointerEvents = 'none';
+
     signInWithEmailAndPassword(auth, email, password)
-      .then(response => {
+      .then((response) => {
         setEmail('');
         setPassword('');
         setError('');
         setIsLoading(false);
-        signinForm[0].style.pointerEvents = 'auto';
+        signinForm.style.pointerEvents = 'auto';
 
         return response;
       })
@@ -40,13 +40,15 @@ export const SignIn = () => {
         const errorOutput = `${errorMessage} ${errorCode}}`;
         setError(errorOutput);
         setIsLoading(false);
-        signinForm[0].style.pointerEvents = 'auto';
+        signinForm.style.pointerEvents = 'auto';
       });
   };
 
   return (
     <div className='signin-wrapper'>
-      <form onSubmit={signin}>
+      <form
+        onSubmit={signin}
+        id='signin-form'>
         <h2>Login to your Account</h2>
         <label htmlFor='email'>Email:</label>
         <input
