@@ -1,3 +1,10 @@
+@mixin overflow-y-auto {
+  overflow-y: auto; // Standard property
+  // Vendor prefixes for compatibility with different browsers
+  -webkit-overflow-scrolling: touch; // Required for smooth scrolling on iOS
+  -ms-overflow-style: -ms-autohiding-scrollbar; // Required for IE/Edge
+}
+
 #root {
   display: flex;
   width: 100%;
@@ -13,7 +20,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;;
-    overflow-y: auto;
+    @include overflow-y-auto();
   }
 }
 
