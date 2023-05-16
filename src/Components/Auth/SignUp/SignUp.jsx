@@ -28,7 +28,7 @@ export const SignUp = () => {
       .then((response) => {
         setEmail('');
         setPassword('');
-        setError('');
+        setError('account created!');
         setIsLoading(false);
         signupForm.style.pointerEvents = 'auto';
 
@@ -36,8 +36,8 @@ export const SignUp = () => {
       })
       .catch((err) => {
         const errorCode = err.code;
-        const errorMessage = err.message;
-        const errorOutput = `${errorMessage} ${errorCode}}`;
+        // const errorMessage = err.message;
+        const errorOutput = ` ${errorCode}`;
         setError(errorOutput);
         setIsLoading(false);
         signupForm.style.pointerEvents = 'auto';
