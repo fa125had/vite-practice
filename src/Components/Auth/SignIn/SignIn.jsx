@@ -17,20 +17,21 @@ export const SignIn = () => {
       setPassword(value);
     }
   };
-  const signin = (submit) => {
+  const signIn = (submit) => {
     submit.preventDefault();
-    const signinForm = document.getElementById('signin-form');
+    const signInForm = document.getElementById('signIn__form');
     setIsLoading(true);
     setError(null);
-    signinForm.style.pointerEvents = 'none';
+    signInForm.style.pointerEvents = 'none';
 
     signInWithEmailAndPassword(auth, email, password)
       .then((response) => {
         setEmail('');
         setPassword('');
-        setError('');
+        setError('Login Successful!');
         setIsLoading(false);
-        signinForm.style.pointerEvents = 'auto';
+
+        signInForm.style.pointerEvents = 'auto';
 
         return response;
       })
@@ -40,39 +41,50 @@ export const SignIn = () => {
         const errorOutput = `${errorMessage} ${errorCode}}`;
         setError(errorOutput);
         setIsLoading(false);
-        signinForm.style.pointerEvents = 'auto';
+        signInForm.style.pointerEvents = 'auto';
       });
   };
 
   return (
-    <div className='signin-wrapper'>
+    <div className='signIn__wrapper'>
       <form
-        onSubmit={signin}
-        id='signin-form'>
-        <h2>Login to your Account</h2>
-        <label htmlFor='email'>Email:</label>
+        onSubmit={signIn}
+        id='signIn__form'
+        className='signIn__form'>
+        <h2 className='signIn__header'>Login to your Account</h2>
+        <label
+          className='signIn__label'
+          htmlFor='email'>
+          Email:
+        </label>
         <input
           type='email'
           name='email'
-          id='signin-email'
+          id='signIn__email'
+          className='signIn__input'
           placeholder='Enter Your Email'
           value={email}
           onChange={changeHandler}
         />
 
-        <label htmlFor='password'>Password:</label>
+        <label
+          className='signIn__label'
+          htmlFor='password'>
+          Password:
+        </label>
         <input
           type='password'
           name='password'
-          id='signin-password'
+          id='signIn__password'
+          className='signIn__input'
           placeholder='Enter Your Password'
           value={password}
           onChange={changeHandler}
         />
-        <button type='submit'>Login</button>
+        <button className='signIn__button' type='submit'>Login</button>
       </form>
-      {error && <div className='errorOutput'>{error}</div>}
-      {isLoading && <div className='errorOutput'>Loading...</div>}
+      {error && <div className='signIn__errorOutput'>{error}</div>}
+      {isLoading && <div className='signIn__errorOutput'>Loading...</div>}
     </div>
   );
 };
