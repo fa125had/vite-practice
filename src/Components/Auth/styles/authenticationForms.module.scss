@@ -1,31 +1,38 @@
-.signup-wrapper {
+.authenticationForm__wrapper {
   width: 100%;
   max-width: 375px;
   display: flex;
   flex-direction: column;
   place-items: center;
-  form {
+
+  .authenticationForm__form {
     display: flex;
     flex-direction: column;
     place-items: center;
-    padding: 0.5rem;
-    label {
+
+    .authenticationForm__header {
+      font-weight: 300;
+    }
+
+    .authenticationForm__label {
       align-self: self-start;
       margin-top: 2rem;
     }
-    input {
-      padding: 0.5rem 4rem;
+
+    .authenticationForm__input {
+      padding: 0.5rem 2rem;
       color: whitesmoke;
       font-size: 1.2rem;
       border: none;
     }
-    button {
-      margin-top: 2rem;
+
+    .authenticationForm__button {
+      margin-top: 1rem;
     }
   }
-  .errorOutput {
+
+  .authenticationForm__errorOutput {
     color: orange;
-    padding: 0.5rem;
     text-align: center;
   }
 }

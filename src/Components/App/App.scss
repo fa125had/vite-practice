@@ -18,10 +18,9 @@
     width: 100%;
     max-width: 414px;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     @include overflow-y-auto();
   }
 }
-

@@ -1,5 +1,4 @@
 import './App.scss'
-import React from 'react';
 
 import {
   RouterProvider,
@@ -23,7 +22,7 @@ const router = createBrowserRouter(
 function App() {
   return (
     <div className='app-wrapper'>
-      <RouterProvider router={router} >
+      <RouterProvider router={router}>
         <Root />
       </RouterProvider>
     </div>
