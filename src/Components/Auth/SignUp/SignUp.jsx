@@ -1,53 +1,55 @@
-import './SignUp.scss'
-import { useState } from 'react'
-import { auth } from '../../../util/Firebase'
-import { createUserWithEmailAndPassword } from '@firebase/auth'
-import { Link } from 'react-router-dom'
+import './SignUp.scss';
+import { useState } from 'react';
+import { auth } from '../../../util/Firebase';
+import { createUserWithEmailAndPassword } from '@firebase/auth';
+import { Link } from 'react-router-dom';
 
 export const SignUp = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState(null)
-  const [isLoading, setIsLoading] = useState(false)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const changeHandler = ({ target }) => {
-    const { name, value } = target
+    const { name, value } = target;
     if (name === 'email') {
-      setEmail(value)
+      setEmail(value);
     } else if (name === 'password') {
-      setPassword(value)
+      setPassword(value);
     }
-  }
+  };
 
-  const signup = submit => {
-    submit.preventDefault()
-    const signupForm = document.getElementById('signup-form')
-    setIsLoading(true)
-    setError(null)
-    signupForm.style.pointerEvents = 'none'
+  const signup = (submit) => {
+    submit.preventDefault();
+    const signupForm = document.getElementById('signup-form');
+    setIsLoading(true);
+    setError(null);
+    signupForm.style.pointerEvents = 'none';
     createUserWithEmailAndPassword(auth, email, password)
-      .then(response => {
-        setEmail('')
-        setPassword('')
-        setError('account created!')
-        setIsLoading(false)
-        signupForm.style.pointerEvents = 'auto'
+      .then((response) => {
+        setEmail('');
+        setPassword('');
+        setError('account created!');
+        setIsLoading(false);
+        signupForm.style.pointerEvents = 'auto';
 
-        return response
+        return response;
       })
-      .catch(err => {
-        const errorCode = err.code
+      .catch((err) => {
+        const errorCode = err.code;
         // const errorMessage = err.message;
-        const errorOutput = ` ${errorCode}`
-        setError(errorOutput)
-        setIsLoading(false)
-        signupForm.style.pointerEvents = 'auto'
-      })
-  }
+        const errorOutput = ` ${errorCode}`;
+        setError(errorOutput);
+        setIsLoading(false);
+        signupForm.style.pointerEvents = 'auto';
+      });
+  };
 
   return (
     <div className='signup-wrapper'>
-      <form onSubmit={signup} id='signup-form'>
+      <form
+        onSubmit={signup}
+        id='signup-form'>
         <h2>Create New Account</h2>
         <label htmlFor='email'>Email:</label>
         <input
@@ -78,5 +80,5 @@ export const SignUp = () => {
         </p>
       </div>
     </div>
-  )
-}
+  );
+};
