@@ -2,6 +2,7 @@ import './SignIn.scss';
 import { auth } from '../../../util/Firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -85,6 +86,11 @@ export const SignIn = () => {
       </form>
       {error && <div className='signIn__errorOutput'>{error}</div>}
       {isLoading && <div className='signIn__errorOutput'>Loading...</div>}
+      <div>
+        <p>
+          Or <Link to='/register'>Register</Link> if you do not have an account.
+        </p>
+      </div>
     </div>
   );
 };
