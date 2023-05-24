@@ -19,9 +19,9 @@ export const SignUp = () => {
     }
   }
 
-  const signup = submit => {
+  const signUp = submit => {
     submit.preventDefault()
-    const signupForm = document.getElementById('signup-form')
+    const signupForm = document.getElementById('signUp__form')
     setIsLoading(true)
     setError(null)
     signupForm.style.pointerEvents = 'none'
@@ -48,7 +48,7 @@ export const SignUp = () => {
   return (
     <div className={styles.authenticationForm__wrapper}>
       <form
-        onSubmit={signup}
+        onSubmit={signUp}
         id='signUp__form'
         className={styles.authenticationForm__form}>
         <h2 className={styles.authenticationForm__header}>
@@ -80,7 +80,7 @@ export const SignUp = () => {
           onChange={changeHandler}
         />
         <button className={styles.authenticationForm__button} type='submit'>
-          SignUp
+          Sign Up
         </button>
       </form>
       {error && (
